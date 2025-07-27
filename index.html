@@ -242,6 +242,20 @@
             <h2 class="text-4xl font-bold text-gray-800 mb-4">Recent Items</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">Browse through the latest lost and found items reported by our campus community</p>
         </div>
+ <!-- Filter Tabs -->
+        <div class="flex justify-center mb-12">
+            <div class="bg-white rounded-2xl p-2 shadow-xl border border-gray-200">
+                <button onclick="showItems('all')" id="allTab" class="px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-indigo-600 text-white shadow-lg">
+                    <i class="fas fa-list mr-2"></i>All Items
+                </button>
+                <button onclick="showItems('lost')" id="lostTab" class="px-8 py-3 rounded-xl font-semibold transition-all duration-300 text-gray-600 hover:text-red-600 hover:bg-red-50">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Lost Items
+                </button>
+                <button onclick="showItems('found')" id="foundTab" class="px-8 py-3 rounded-xl font-semibold transition-all duration-300 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">
+                    <i class="fas fa-check-circle mr-2"></i>Found Items
+                </button>
+            </div>
+        </div>
 
 
  
