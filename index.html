@@ -506,6 +506,49 @@
         const menu = document.getElementById('mobileMenu');
         menu.classList.toggle('hidden');
     }
+ // Enhanced Search Functionality
+    function searchItems() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+        const items = document.querySelectorAll('.item-card');
+        let visibleCount = 0;
+        
+        if (searchTerm === '') {
+            // Show all items if search is empty
+            items.forEach(item => {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                visibleCount++;
+            });
+            showNotification(`Showing all ${visibleCount} items`, 'info');
+            return;
+        }
+        
+        items.forEach(item => {
+            const title = item.querySelector('h3').textContent.toLowerCase();
+            const description = item.querySelector('p').textContent.toLowerCase();
+            const location = item.querySelector('.fas.fa-map-marker-alt').nextElementSibling.textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm) || location.includes(searchTerm)) {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                visibleCount++;
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+
+      if (visibleCount === 0) {
+            showNotification(`No items found for "${searchTerm}"`, 'warning');
+        } else {
+            showNotification(`Found ${visibleCount} items matching "${searchTerm}"`, 'success');
+        }
+    }
 
  
 
