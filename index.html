@@ -697,7 +697,18 @@
         alert('FAQ: Frequently Asked Questions\n\n1. How do I report a lost item?\n2. How long are items kept?\n3. How do I claim a found item?\n4. Is there a fee for using this service?\n\nFor detailed answers, please contact our support team.');
     }
 
- 
+// Search on Enter key
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchItems();
+        }
+    });
 
-  </body>
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+        showItems('all');
+    });
+</script>
+
+</body>
 </html>
