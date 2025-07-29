@@ -605,6 +605,31 @@
         });
     }
 
+// Enhanced Quick Search Function
+    function quickSearch(category) {
+        document.getElementById('searchInput').value = category;
+        const items = document.querySelectorAll('.item-card');
+        let visibleCount = 0;
+        
+        items.forEach(item => {
+            const title = item.querySelector('h3').textContent.toLowerCase();
+            const description = item.querySelector('p').textContent.toLowerCase();
+            const itemCategory = item.getAttribute('data-category') || '';
+            
+            if (title.includes(category) || description.includes(category) || itemCategory.includes(category)) {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                visibleCount++;
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+        
  
 
   </body>
