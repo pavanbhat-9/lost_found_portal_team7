@@ -566,6 +566,45 @@
             }
         });
         
+// Activate current tab
+        if (type === 'all') {
+            document.getElementById('allTab').className = 'px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-indigo-600 text-white shadow-lg';
+        } else if (type === 'lost') {
+            document.getElementById('lostTab').className = 'px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-red-600 text-white shadow-lg';
+        } else if (type === 'found') {
+            document.getElementById('foundTab').className = 'px-8 py-3 rounded-xl font-semibold transition-all duration-300 bg-emerald-600 text-white shadow-lg';
+        }
+        
+        // Show/hide items with animation
+        allItems.forEach((item, index) => {
+            if (type === 'all') {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 50);
+            } else if (type === 'lost' && item.classList.contains('lost-item')) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 50);
+            } else if (type === 'found' && item.classList.contains('found-item')) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+
  
 
   </body>
