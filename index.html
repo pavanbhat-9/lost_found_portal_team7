@@ -666,6 +666,28 @@
         
         container.appendChild(notification);
         
+  // Slide in animation
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full');
+        }, 100);
+        
+        // Auto remove after 4 seconds
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }
+        }, 4000);
+    }
+
+    // Load More Items Function (No functionality - just a placeholder button)
+    function loadMoreItems() {
+        // Button exists but has no functionality
+    }
  
 
   </body>
